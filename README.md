@@ -23,3 +23,6 @@ YouTubePlayerActivity Handles
 * Media Volume Problem
 
     While user is watching YouTube Player, they should be able to set media volume!!!
+    
+    
+BY THE FINEST ARTIST
