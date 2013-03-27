@@ -1,6 +1,8 @@
 SimpleYouTubePlayer
 ===================
 
+Download sample app from https://play.google.com/store/apps/details?id=com.thefinestartist.simpleyoutubeplayer
+
 There is YouTubePlayerActivity which using YouTubePlayerAPI
 
 You can simply use this YouTubePlayerActivity with YouTubeFailureRecoveryActivity
