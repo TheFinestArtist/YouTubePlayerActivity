@@ -31,13 +31,13 @@ BY THE FINEST ARTIST
 
 Screen Shot
 ----------------
-<img src=https://github.com/TheFinestArtist/SimpleYouTubePlayer/blob/master/res/drawable-xhdpi/Screenshot_1.png?raw=true width=500px>
+<img src=https://github.com/TheFinestArtist/SimpleYouTubePlayer/blob/master/res/drawable-xhdpi/screenshot_1.png?raw=true width=500px>
 
 
-<img src=https://github.com/TheFinestArtist/SimpleYouTubePlayer/blob/master/res/drawable-xhdpi/Screenshot_2.png?raw=true width=500px>
+<img src=https://github.com/TheFinestArtist/SimpleYouTubePlayer/blob/master/res/drawable-xhdpi/screenshot_2.png?raw=true width=500px>
 
 
-<img src=https://github.com/TheFinestArtist/SimpleYouTubePlayer/blob/master/res/drawable-xhdpi/Screenshot_3.png?raw=true width=500px>
+<img src=https://github.com/TheFinestArtist/SimpleYouTubePlayer/blob/master/res/drawable-xhdpi/screenshot_3.png?raw=true width=500px>
 
 ## License
 
