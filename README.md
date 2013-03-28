@@ -33,7 +33,9 @@ YouTubePlayerActivity Handles
 Developer
 ----------------
 THE FINEST ARTIST
-Facebook : facebook.com/TheFinestArtist
+
+Facebook : www.facebook.com/TheFinestArtist
+
 Email : liger745547@gmail.com
 
 
