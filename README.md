@@ -20,6 +20,8 @@ YouTubePlayerActivity Handles
 * Youtube url Parsing Problem
 
     Method called parseYoutubeVideoId can make YouTube URL to Video ID.
+    
+    Get some help from http://androidsnippets.wordpress.com/2012/10/11/how-to-get-extract-video-id-from-an-youtube-url-in-android-java/
 
 
 * Media Volume Problem
