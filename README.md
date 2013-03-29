@@ -5,9 +5,29 @@ Download sample app from https://play.google.com/store/apps/details?id=com.thefi
 
 There is YouTubePlayerActivity which using YouTubePlayerAPI
 
-You can simply use this YouTubePlayerActivity with YouTubeFailureRecoveryActivity
+* HOW TO USE
+----------------
 
-YouTubePlayerActivity Handles
+Put Youtube_api_key in YouTubePlayerActivity
+
+    public static final String GOOGLE_API_KEY = "AIzaSyAOfxiG4aV66h3XmssCEkP3qCvCq******";
+
+GET Youtube Video id from URL
+    
+    final String videoId = YouTubePlayerActivity.getYouTubeVideoId("http://www.youtube.com/watch?v=9bZkp7q19f0"); 
+        
+ADD video id as Extra and Start Activity
+    
+    Intent intent = new Intent(MainActivity.this, YouTubePlayerActivity.class);
+    
+    intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_ID, videoId);
+    
+    intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+    
+    startActivity(intent);
+
+WHAT IT DOES
+----------------
 
 
 * Orientation Problem (with Auto Rotation mode)
