@@ -5,7 +5,7 @@ Download sample app from https://play.google.com/store/apps/details?id=com.thefi
 
 There is YouTubePlayerActivity which using YouTubePlayerAPI
 
-* HOW TO USE
+HOW TO USE
 ----------------
 
 Put Youtube_api_key in YouTubePlayerActivity
