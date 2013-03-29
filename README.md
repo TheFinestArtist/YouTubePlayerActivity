@@ -46,7 +46,7 @@ WHAT IT DOES
 
 * Media Volume Problem
 
-    While user is watching YouTube Player, they should be able to set media volume!!!
+    While watching YouTube Player, users should be able to set media volume!!!
     
     
     
