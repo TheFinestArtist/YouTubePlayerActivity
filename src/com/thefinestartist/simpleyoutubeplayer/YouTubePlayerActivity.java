@@ -3,6 +3,7 @@ package com.thefinestartist.simpleyoutubeplayer;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.media.AudioManager;
@@ -11,8 +12,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.KeyEvent;
+import android.widget.FrameLayout.LayoutParams;
 import android.widget.Toast;
 
+import com.google.android.youtube.player.YouTubeBaseActivity;
+import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayer.OnFullscreenListener;
 import com.google.android.youtube.player.YouTubePlayerView;
@@ -20,16 +24,29 @@ import com.google.android.youtube.player.YouTubePlayerView;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class YouTubePlayerActivity extends YouTubeFailureRecoveryActivity implements
-        OnFullscreenListener {
+public class YouTubePlayerActivity extends YouTubeBaseActivity implements
+        YouTubePlayer.OnInitializedListener, OnFullscreenListener {
 
-/**
- * You can use it as you want~
- * @author The Finest Artist
- */
-    
+    /**
+     * Copyright 2013 The Finest Artist
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *   http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
+
     public static final String EXTRA_VIDEO_ID = "video_id";
     private static final boolean TOAST = false;
+    private static final int RECOVERY_DIALOG_REQUEST = 1;
+    public static final String GOOGLE_API_KEY = "AIzaSyAOfxiG4aV66h3XmssCEkP3qCvCqMbDGDI";
 
     @SuppressLint("InlinedApi")
     private static final int PORTRAIT_ORIENTATION = Build.VERSION.SDK_INT < 9
@@ -50,13 +67,14 @@ public class YouTubePlayerActivity extends YouTubeFailureRecoveryActivity implem
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.act_youtube_player);
-        mPlayerView = (YouTubePlayerView) findViewById(R.id.player);
-        mPlayerView.initialize(getString(R.string.google_api_key), this);
+        mPlayerView = new YouTubePlayerView(this);
+        mPlayerView.initialize(GOOGLE_API_KEY, this);
         mVideoId = getIntent().getStringExtra(EXTRA_VIDEO_ID);
 
         mAutoRotation = Settings.System.getInt(getContentResolver(),
                 Settings.System.ACCELEROMETER_ROTATION, 0) == 1;
+        
+        addContentView(mPlayerView, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
     }
 
     @Override
@@ -80,7 +98,27 @@ public class YouTubePlayerActivity extends YouTubeFailureRecoveryActivity implem
     }
 
     @Override
-    protected YouTubePlayer.Provider getYouTubePlayerProvider() {
+    public void onInitializationFailure(YouTubePlayer.Provider provider,
+            YouTubeInitializationResult errorReason) {
+        if (errorReason.isUserRecoverableError()) {
+            errorReason.getErrorDialog(this, RECOVERY_DIALOG_REQUEST).show();
+        } else {
+            String errorMessage = String.format(
+                    "There was an error initializing the YouTubePlayer (%1$s)",
+                    errorReason.toString());
+            Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == RECOVERY_DIALOG_REQUEST) {
+            // Retry initialization if user performed a recovery action
+            getYouTubePlayerProvider().initialize(GOOGLE_API_KEY, this);
+        }
+    }
+
+    public YouTubePlayer.Provider getYouTubePlayerProvider() {
         return mPlayerView;
     }
 
