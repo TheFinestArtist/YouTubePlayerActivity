@@ -17,9 +17,12 @@
 package com.thefinestartist.simpleyoutubeplayer;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.media.AudioManager;
 import android.net.Uri;
@@ -33,14 +36,17 @@ import android.widget.Toast;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
-import com.google.android.youtube.player.YouTubePlayer.OnFullscreenListener;
+import com.google.android.youtube.player.YouTubePlayer.ErrorReason;
 import com.google.android.youtube.player.YouTubePlayerView;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class YouTubePlayerActivity extends YouTubeBaseActivity implements
-        YouTubePlayer.OnInitializedListener, OnFullscreenListener {
+        YouTubePlayer.OnFullscreenListener,
+        YouTubePlayer.OnInitializedListener,
+        YouTubePlayer.PlayerStateChangeListener {
 
     public static final String EXTRA_VIDEO_ID = "video_id";
     private static final boolean TOAST = false;
@@ -81,6 +87,9 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player,
             boolean wasRestored) {
         mPlayer = player;
+        player.setPlayerStateChangeListener(this);
+        player.setOnFullscreenListener(this);
+        
         if (mAutoRotation) {
             player.addFullscreenControlFlag(YouTubePlayer.FULLSCREEN_FLAG_CONTROL_ORIENTATION
                     | YouTubePlayer.FULLSCREEN_FLAG_CONTROL_SYSTEM_UI
@@ -91,10 +100,9 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
                     | YouTubePlayer.FULLSCREEN_FLAG_CONTROL_SYSTEM_UI
                     | YouTubePlayer.FULLSCREEN_FLAG_CUSTOM_LAYOUT);
         }
-        if (!wasRestored) {
+        
+        if (!wasRestored)
             player.loadVideo(mVideoId);
-            player.setOnFullscreenListener(this);
-        }
     }
 
     @Override
@@ -215,6 +223,54 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
             }
         }
         return video_id;
+    }
+
+    @Override
+    public void onError(ErrorReason reason) {
+        if (YouTubePlayer.ErrorReason.BLOCKED_FOR_APP.equals(reason)
+                || YouTubePlayer.ErrorReason.EMBEDDING_DISABLED.equals(reason)) {
+            Uri video_uri = Uri.parse("http://www.youtube.com/watch?v=" + mVideoId);
+            startVideo(this, video_uri);
+        }
+    }
+
+    private void startVideo(Activity act, Uri video_url) {
+        String video_id = video_url.getQueryParameter("v");
+        Intent intent;
+
+        if (video_id != null) {
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" + video_id));
+            List<ResolveInfo> list = act.getPackageManager().queryIntentActivities(
+                    intent,
+                    PackageManager.MATCH_DEFAULT_ONLY);
+            
+            if (list.size() == 0)
+                intent = new Intent(Intent.ACTION_VIEW, video_url);
+        } else {
+            intent = new Intent(Intent.ACTION_VIEW, video_url);
+        }
+
+        act.startActivity(intent);
+    }
+
+    @Override
+    public void onAdStarted() {
+    }
+
+    @Override
+    public void onLoaded(String videoId) {
+    }
+
+    @Override
+    public void onLoading() {
+    }
+
+    @Override
+    public void onVideoEnded() {
+    }
+
+    @Override
+    public void onVideoStarted() {
     }
 
 }
