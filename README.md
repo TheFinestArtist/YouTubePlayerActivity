@@ -54,9 +54,9 @@ Developer
 ----------------
 THE FINEST ARTIST
 
-Facebook : www.facebook.com/TheFinestArtist
+Facebook : www.TheFinestArtist.com
 
-Email : liger745547@gmail.com
+Email : contact@thefinestartist.com
 
 
 
