@@ -22,7 +22,8 @@ ADD video id as Extra and Start Activity
     
     intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_ID, videoId);
     
-    intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+    //This Flag might cause the video to turned off automatically on phonecall
+    intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY); 
     
     startActivity(intent);
 
