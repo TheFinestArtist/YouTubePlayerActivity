@@ -1,4 +1,3 @@
-
 package com.thefinestartist.simpleyoutubeplayer;
 
 import android.annotation.TargetApi;
@@ -124,6 +123,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, YouTubePlayerActivity.class);
                 intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_ID, videoId);
+                //This Flag might cause the video to turned off automatically on phonecall
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
             }
