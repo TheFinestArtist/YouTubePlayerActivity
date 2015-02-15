@@ -2,13 +2,11 @@ package com.thefinestartist.ytpa;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
-import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,6 +20,7 @@ import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayer.ErrorReason;
 import com.google.android.youtube.player.YouTubePlayerView;
+import com.thefinestartist.ytpa.utils.AudioUtil;
 
 import java.util.List;
 
@@ -34,19 +33,9 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
     private static final int RECOVERY_DIALOG_REQUEST = 1;
     public static final String GOOGLE_API_KEY = "AIzaSyAOfxiG4aV66h3XmssCEkP3qCvCqMbDGDI";
 
-    @SuppressLint("InlinedApi")
-    private static final int PORTRAIT_ORIENTATION = Build.VERSION.SDK_INT < 9
-            ? ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-            : ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT;
-
-    @SuppressLint("InlinedApi")
-    private static final int LANDSCAPE_ORIENTATION = Build.VERSION.SDK_INT < 9
-            ? ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-            : ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE;
-
     private YouTubePlayerView mPlayerView;
-    private String mVideoId = null;
-    private YouTubePlayer mPlayer = null;
+    private String mVideoId;
+    private YouTubePlayer mPlayer;
     private boolean mAutoRotation = false;
 
     @Override
@@ -65,7 +54,8 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
     }
 
     @Override
-    public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player,
+    public void onInitializationSuccess(YouTubePlayer.Provider provider,
+                                        YouTubePlayer player,
                                         boolean wasRestored) {
         mPlayer = player;
         player.setPlayerStateChangeListener(this);
@@ -124,9 +114,19 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
         }
     }
 
+    @SuppressLint("InlinedApi")
+    private static final int PORTRAIT_ORIENTATION = Build.VERSION.SDK_INT < 9
+            ? ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+            : ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT;
+
+    @SuppressLint("InlinedApi")
+    private static final int LANDSCAPE_ORIENTATION = Build.VERSION.SDK_INT < 9
+            ? ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+            : ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE;
+
     @Override
-    public void onFullscreen(boolean fullsize) {
-        if (fullsize) {
+    public void onFullscreen(boolean fullScreen) {
+        if (fullScreen) {
             setRequestedOrientation(LANDSCAPE_ORIENTATION);
         } else {
             setRequestedOrientation(PORTRAIT_ORIENTATION);
@@ -135,20 +135,11 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-
         if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
-            AudioManager audioManager = (AudioManager) getBaseContext().getSystemService(
-                    Context.AUDIO_SERVICE);
-            audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,
-                    AudioManager.ADJUST_RAISE,
-                    AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE | AudioManager.FLAG_SHOW_UI);
+            AudioUtil.adjustMusicVolume(getApplicationContext(), true, true);
             return true;
         } else if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
-            AudioManager audioManager = (AudioManager) getBaseContext().getSystemService(
-                    Context.AUDIO_SERVICE);
-            audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,
-                    AudioManager.ADJUST_LOWER,
-                    AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE | AudioManager.FLAG_SHOW_UI);
+            AudioUtil.adjustMusicVolume(getApplicationContext(), false, true);
             return true;
         }
 

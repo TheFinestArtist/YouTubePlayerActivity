@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 /**
  * Created by TheFinestArtist on 2/15/15.
  */
-public class YoutubeUrlParser {
+public class YouTubeUrlParser {
 
     // ^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/
     final static String reg = "^.*((youtu.be\\/)|(v\\/)|(\\/u\\/w\\/)|(embed\\/)|(watch\\?))\\??v?=?([^#\\&\\?]*).*";
