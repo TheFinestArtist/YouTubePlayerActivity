@@ -1,0 +1,30 @@
+apply plugin: 'com.android.library'
+apply plugin: 'bintray-release'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        minSdkVersion 1
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0.0"
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+publish {
+    userOrg = 'thefinestartist'
+    groupId = 'com.thefinestartist'
+    artifactId = 'ytpa'
+    version = '1.0.0'
+    description = 'YouTube Player Activity'
+    website = 'https://github.com/TheFinestArtist/YouTubePlayerActivity'
+}
