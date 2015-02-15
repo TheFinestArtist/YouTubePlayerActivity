@@ -1,4 +1,4 @@
-# Moving Button
+# YouTube Player Activity
 
 Simply pass a url to play youtube video on new activity. It supports screen orientation, media volume control and etc.
 
@@ -8,8 +8,7 @@ Simply pass a url to play youtube video on new activity. It supports screen orie
     android:name="com.thefinestartist.ytpa.YouTubePlayerActivity"
     android:configChanges="keyboardHidden|orientation|screenSize"
     android:screenOrientation="sensor"
-    android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
-</activity>
+    android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
 ```
 
 ## YoutubeUrlParser
