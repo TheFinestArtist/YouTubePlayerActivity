@@ -25,6 +25,6 @@ publish {
     groupId = 'com.thefinestartist'
     artifactId = 'ytpa'
     version = '1.0.0'
-    description = 'YouTube Player Activity'
+    description = 'Simply pass a url to play youtube video on new activity. It supports screen orientation, media volume control and etc.'
     website = 'https://github.com/TheFinestArtist/YouTubePlayerActivity'
 }

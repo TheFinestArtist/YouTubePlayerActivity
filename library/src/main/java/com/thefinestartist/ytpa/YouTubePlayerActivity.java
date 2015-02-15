@@ -1,19 +1,3 @@
-/**
- * Copyright 2013 The Finest Artist
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.thefinestartist.ytpa;
 
 import android.annotation.SuppressLint;
@@ -40,8 +24,6 @@ import com.google.android.youtube.player.YouTubePlayer.ErrorReason;
 import com.google.android.youtube.player.YouTubePlayerView;
 
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class YouTubePlayerActivity extends YouTubeBaseActivity implements
         YouTubePlayer.OnFullscreenListener,
@@ -49,7 +31,6 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
         YouTubePlayer.PlayerStateChangeListener {
 
     public static final String EXTRA_VIDEO_ID = "video_id";
-    private static final boolean TOAST = false;
     private static final int RECOVERY_DIALOG_REQUEST = 1;
     public static final String GOOGLE_API_KEY = "AIzaSyAOfxiG4aV66h3XmssCEkP3qCvCqMbDGDI";
 
@@ -137,23 +118,14 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             if (mPlayer != null)
                 mPlayer.setFullscreen(true);
-            if (TOAST)
-                Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
             if (mPlayer != null)
                 mPlayer.setFullscreen(false);
-            if (TOAST)
-                Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
-        } else {
-            if (TOAST)
-                Toast.makeText(this, "configuration changed", Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
     public void onFullscreen(boolean fullsize) {
-        if (TOAST)
-            Toast.makeText(this, "full size change : " + fullsize, Toast.LENGTH_SHORT).show();
         if (fullsize) {
             setRequestedOrientation(LANDSCAPE_ORIENTATION);
         } else {
@@ -181,44 +153,6 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
         }
 
         return super.onKeyDown(keyCode, event);
-    }
-
-    public static String getYouTubeVideoId(String video_url) {
-
-        if (video_url != null && video_url.length() > 0) {
-
-            Uri video_uri = Uri.parse(video_url);
-            String video_id = video_uri.getQueryParameter("v");
-
-            if (video_id == null)
-                video_id = parseYoutubeVideoId(video_url);
-
-            return video_id;
-        }
-        return null;
-    }
-
-    public static String parseYoutubeVideoId(String youtubeUrl) {
-        String video_id = null;
-        if (youtubeUrl != null && youtubeUrl.trim().length() > 0 &&
-                youtubeUrl.startsWith("http")) {
-            // ^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/
-            String expression = "^.*((youtu.be" + "\\/)"
-                    + "|(v\\/)|(\\/u\\/w\\/)|(embed\\/)|(watch\\?))\\??v?=?([^#\\&\\?]*).*";
-            CharSequence input = youtubeUrl;
-            Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
-            Matcher matcher = pattern.matcher(input);
-            if (matcher.matches()) {
-                // Regular expression some how doesn't work with id with "v" at
-                // prefix
-                String groupIndex1 = matcher.group(7);
-                if (groupIndex1 != null && groupIndex1.length() == 11)
-                    video_id = groupIndex1;
-                else if (groupIndex1 != null && groupIndex1.length() == 10)
-                    video_id = "v" + groupIndex1;
-            }
-        }
-        return video_id;
     }
 
     @Override
