@@ -27,6 +27,10 @@
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
 
         <meta-data
+            android:name="com.thefinestartist.ytpa.YouTubePlayerActivity.ApiKey"
+            android:value="AIzaSyAOfxiG4aV66h3XmssCEkP3qCvCqMbDGDI" />
+
+        <meta-data
             android:name="com.crashlytics.ApiKey"
             android:value="286eb9845a463270ba6a058f160c64043f7639e9" />
     </application>

@@ -27,10 +27,23 @@
             android:orientation="vertical">
 
             <ImageButton
+                android:id="@+id/play_bt"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:src="@drawable/ic_launcher"
-                android:background="@android:color/black" />
+                android:src="@drawable/ic_play"
+                android:background="@color/primary_text" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/settings"
+                android:textColor="@color/accent"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:includeFontPadding="false" />
 
         </LinearLayout>
     </ScrollView>

@@ -1,19 +1,66 @@
-# YouTube Player Activity
+# YouTube Player Activity [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-MovingButton-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1542) [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)](http://opensource.org/licenses/MIT)
 
 Simply pass a url to play youtube video on new activity. It supports screen orientation, media volume control and etc.
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
+
 <activity
     android:name="com.thefinestartist.ytpa.YouTubePlayerActivity"
     android:configChanges="keyboardHidden|orientation|screenSize"
     android:screenOrientation="sensor"
     android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+
+<meta-data
+    android:name="com.thefinestartist.ytpa.YouTubePlayerActivity.ApiKey"
+    android:value="your_google_api_key" />
 ```
+
+```java
+Intent intent = new Intent(MainActivity.this, YouTubePlayerActivity.class);
+
+// Youtube video ID or Url (Required)
+intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_ID, "iS1g8G_njx8");
+intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_URL, "https://www.youtube.com/watch?v=iS1g8G_njx8");
+
+// Show audio interface when user adjust volume (true for default)
+intent.putExtra(YouTubePlayerActivity.EXTRA_SHOW_AUDIO_UI, true);
+
+// If the video is not playable, use Youtube app or Internet Browser to play it (true for default)
+intent.putExtra(YouTubePlayerActivity.EXTRA_HANDLE_ERROR, true);
+
+// Animation when closing youtubeplayeractivity (none for default)
+intent.putExtra(YouTubePlayerActivity.EXTRA_ANIM_ENTER, R.anim.fade_in);
+intent.putExtra(YouTubePlayerActivity.EXTRA_ANIM_EXIT, R.anim.fade_out);
+
+intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+startActivity(intent);
+```
+
+* Orientation Problem (with Auto Rotation mode)
+
+    Auto-Rotation ON : You can either use sensor or YouTube full screen button.
+
+    Auto-Rotation OFF : You can just use YouTube full screen button.
+
+
+* Youtube url Parsing Problem
+
+    Method called parseYoutubeVideoId can make YouTube URL to Video ID.
+
+    Get some help from http://androidsnippets.wordpress.com/2012/10/11/how-to-get-extract-video-id-from-an-youtube-url-in-android-java/
+
+
+* Media Volume Problem
+
+    While watching YouTube Player, users should be able to set media volume!!!
 
 ## YoutubeUrlParser
 
-https://androidsnippets.wordpress.com/2012/10/11/how-to-get-extract-video-id-from-an-youtube-url-in-android-java/
+This util helps to retrieve youtube video id from youtube url. [Reference](https://androidsnippets.wordpress.com/2012/10/11/how-to-get-extract-video-id-from-an-youtube-url-in-android-java)
+
+```java
+```
 
 
 ## License
