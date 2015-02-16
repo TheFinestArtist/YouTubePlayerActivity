@@ -1,12 +1,12 @@
-# YouTube Player Activity [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-YouTubePlayerActivity-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1542) [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)](http://opensource.org/licenses/MIT)
+# YouTubePlayerActivity [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-YouTubePlayerActivity-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1542) [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)](http://opensource.org/licenses/MIT)
 
 Simply pass a url to play youtube video on new activity. It supports screen orientation, media volume control and etc.
 
-## Preview
+### Preview
 
 ![Preview](https://github.com/thefinestartist/ytpa/blob/master/art/preview.gif)
 
-## Sample Demo
+### Sample Demo
 
 You can download demo movie file here : [demo.mov](https://github.com/thefinestartist/ytpa/raw/master/art/demo.mov)
 
@@ -17,7 +17,7 @@ It's also on Youtube:
        src="https://github.com/thefinestartist/ytpa/blob/master/art/youtube.png" />
 </a>
 
-## Sample Project
+### Sample Project
 
 You can download the latest sample APK from this repo here: [sample-release.apk](https://github.com/thefinestartist/ytpa/raw/master/sample/sample-release.apk)
 
@@ -30,7 +30,7 @@ It's also on Google Play:
 
 Having the sample project installed is a good way to be notified of new releases.
 
-## Gradle Dependency (jcenter)
+### Gradle Dependency (jcenter)
 
 Easily reference the library in your Android projects using this dependency in your module's `build.gradle` file:
 
@@ -40,12 +40,12 @@ dependencies {
 }
 ```
 
-## Requirements
+### Requirements
 
 It supports Android API 3+.
 
 
-#### Features
+### Features
 * Orientation Support (with Auto Rotation mode)
 
     Auto-Rotation ON : You can either use sensor or YouTube full screen button.
@@ -66,7 +66,7 @@ It supports Android API 3+.
     Activity closing animation can be customized.
 
 
-#### Set Up AndroidManifest.xml
+### Set Up AndroidManifest.xml
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 
@@ -81,7 +81,7 @@ It supports Android API 3+.
     android:value="your_google_api_key" />
 ```
 
-#### Usage
+### Usage
 ```java
 Intent intent = new Intent(MainActivity.this, YouTubePlayerActivity.class);
 
@@ -109,7 +109,7 @@ intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 startActivity(intent);
 ```
 
-## YoutubeUrlParser
+### YoutubeUrlParser
 
 This util helps to retrieve youtube video id from youtube url or vice versa. [Reference](https://androidsnippets.wordpress.com/2012/10/11/how-to-get-extract-video-id-from-an-youtube-url-in-android-java)
 
