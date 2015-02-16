@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Youtube Player</string>
     <string name="settings">SETTINGS</string>
+    <string name="extra_screen_orientation">EXTRA_SCREEN_ORIENTATION</string>
+    <string name="extra_show_audio_ui">EXTRA_SHOW_AUDIO_UI</string>
+    <string name="extra_anim">EXTRA_ANIM</string>
 </resources>

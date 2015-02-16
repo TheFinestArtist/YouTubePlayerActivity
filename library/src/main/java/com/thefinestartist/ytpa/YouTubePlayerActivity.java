@@ -30,10 +30,16 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
     private static final int RECOVERY_DIALOG_REQUEST = 1;
 
     public static final String META_DATA_NAME = "com.thefinestartist.ytpa.YouTubePlayerActivity.ApiKey";
+
     public static final String EXTRA_VIDEO_ID = "video_id";
     public static final String EXTRA_VIDEO_URL = "video_url";
+
+    public static final String EXTRA_SCREEN_ORIENTATION = "screen_orientation";
+
     public static final String EXTRA_SHOW_AUDIO_UI = "show_audio_ui";
+
     public static final String EXTRA_HANDLE_ERROR = "handle_error";
+
     public static final String EXTRA_ANIM_ENTER = "anim_enter";
     public static final String EXTRA_ANIM_EXIT = "anim_exit";
 
