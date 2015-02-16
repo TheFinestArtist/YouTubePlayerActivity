@@ -1,7 +1,5 @@
 package com.thefinestartist.ytpa.utils;
 
-import android.net.Uri;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,41 +8,22 @@ import java.util.regex.Pattern;
  */
 public class YouTubeUrlParser {
 
-    // ^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/
-    final static String reg = "^.*((youtu.be\\/)|(v\\/)|(\\/u\\/w\\/)|(embed\\/)|(watch\\?))\\??v?=?([^#\\&\\?]*).*";
-
-    public static String parseVideoId(String url) {
-        String videoDd = null;
-        if (url != null && url.trim().length() > 0 && url.startsWith("http")) {
-            Pattern pattern = Pattern.compile(reg, Pattern.CASE_INSENSITIVE);
-            Matcher matcher = pattern.matcher(url);
-
-            // Regular reg some how doesn't work with id with "v" at prefix
-            if (matcher.matches()) {
-                String groupIndex = matcher.group(7);
-                if (groupIndex != null && groupIndex.length() == 11)
-                    videoDd = groupIndex;
-                else if (groupIndex != null && groupIndex.length() == 10)
-                    videoDd = "v" + groupIndex;
-            }
-        }
-        return videoDd;
-    }
+    // /(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})
+    final static String reg = "/(?:youtube(?:-nocookie)?\\.com\\/(?:[^\\/\\n\\s]+\\/\\S+\\/|(?:v|e(?:mbed)?)\\/|\\S*?[?&]v=)|youtu\\.be\\/)([a-zA-Z0-9_-]{11})";
 
     public static String getVideoId(String videoUrl) {
-        if (videoUrl == null)
+        if (videoUrl == null || videoUrl.trim().length() <= 0)
             return null;
 
-        Uri uri = Uri.parse(videoUrl);
-        String videoId = uri.getQueryParameter("v");
+        Pattern pattern = Pattern.compile(reg, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(videoUrl);
 
-        if (videoId == null)
-            videoId = parseVideoId(videoUrl);
-
-        return videoId;
+        if (matcher.find())
+            return matcher.group(1);
+        return null;
     }
 
     public static String getVidoeUrl(String videoId) {
-        return "http://www.youtube.com/watch?v=" + videoId;
+        return "http://youtu.be/" + videoId;
     }
 }
