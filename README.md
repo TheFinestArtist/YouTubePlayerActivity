@@ -1,6 +1,48 @@
-# YouTube Player Activity [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-MovingButton-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1542) [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)](http://opensource.org/licenses/MIT)
+# YouTube Player Activity [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-YouTubePlayerActivity-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1542) [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)](http://opensource.org/licenses/MIT)
 
 Simply pass a url to play youtube video on new activity. It supports screen orientation, media volume control and etc.
+
+## Preview
+
+![Preview](https://github.com/thefinestartist/ytpa/blob/master/art/preview.gif)
+
+## Sample Demo
+
+You can download demo movie file here : [demo.mov](https://github.com/thefinestartist/ytpa/raw/master/art/demo.mov)
+
+It's also on Youtube:
+
+<a href="http://www.youtube.com/watch?v=myheMkavjzk">
+  <img alt="Youtube"
+       src="https://github.com/thefinestartist/ytpa/blob/master/art/youtube.png" />
+</a>
+
+## Sample Project
+
+You can download the latest sample APK from this repo here: [sample-release.apk](https://github.com/thefinestartist/ytpa/raw/master/sample/sample-release.apk)
+
+It's also on Google Play:
+
+<a href="https://play.google.com/store/apps/details?id=com.thefinestartist.ytpa.sample">
+  <img alt="Get it on Google Play"
+       src="https://developer.android.com/images/brand/en_generic_rgb_wo_60.png" />
+</a>
+
+Having the sample project installed is a good way to be notified of new releases.
+
+## Gradle Dependency (jcenter)
+
+Easily reference the library in your Android projects using this dependency in your module's `build.gradle` file:
+
+```Gradle
+dependencies {
+    compile 'com.thefinestartist:ytpa:1.0.0' // Work in Process
+}
+```
+
+## Requirements
+
+It supports Android API 3+.
 
 
 #### Features
