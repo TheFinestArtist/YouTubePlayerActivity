@@ -2,6 +2,21 @@
 
 Simply pass a url to play youtube video on new activity. It supports screen orientation, media volume control and etc.
 
+
+#### Features
+* Orientation Problem (with Auto Rotation mode)
+
+    Auto-Rotation ON : You can either use sensor or YouTube full screen button.
+
+    Auto-Rotation OFF : You can just use YouTube full screen button.
+
+
+* Media Volume Support
+
+    While watching YouTube Player, users should be able to set media volume!!!
+
+
+#### Set Up AndroidManifest.xml
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 
@@ -16,6 +31,7 @@ Simply pass a url to play youtube video on new activity. It supports screen orie
     android:value="your_google_api_key" />
 ```
 
+#### Usage
 ```java
 Intent intent = new Intent(MainActivity.this, YouTubePlayerActivity.class);
 
@@ -37,29 +53,13 @@ intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 startActivity(intent);
 ```
 
-* Orientation Problem (with Auto Rotation mode)
-
-    Auto-Rotation ON : You can either use sensor or YouTube full screen button.
-
-    Auto-Rotation OFF : You can just use YouTube full screen button.
-
-
-* Youtube url Parsing Problem
-
-    Method called parseYoutubeVideoId can make YouTube URL to Video ID.
-
-    Get some help from http://androidsnippets.wordpress.com/2012/10/11/how-to-get-extract-video-id-from-an-youtube-url-in-android-java/
-
-
-* Media Volume Problem
-
-    While watching YouTube Player, users should be able to set media volume!!!
-
 ## YoutubeUrlParser
 
 This util helps to retrieve youtube video id from youtube url. [Reference](https://androidsnippets.wordpress.com/2012/10/11/how-to-get-extract-video-id-from-an-youtube-url-in-android-java)
 
 ```java
+String vidoeId = YoutubeUrlParser.getVideoId(videoUrl);
+String vidoeUrl = YoutubeUrlParser.getVideoId(videoId);
 ```
 
 

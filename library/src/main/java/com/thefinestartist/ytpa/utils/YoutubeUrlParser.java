@@ -31,16 +31,20 @@ public class YouTubeUrlParser {
         return videoDd;
     }
 
-    public static String getVideoId(String url) {
-        if (url == null)
+    public static String getVideoId(String videoUrl) {
+        if (videoUrl == null)
             return null;
 
-        Uri uri = Uri.parse(url);
+        Uri uri = Uri.parse(videoUrl);
         String videoId = uri.getQueryParameter("v");
 
         if (videoId == null)
-            videoId = parseVideoId(url);
+            videoId = parseVideoId(videoUrl);
 
         return videoId;
+    }
+
+    public static String getVidoeUrl(String vidoeId) {
+        return "http://www.youtube.com/watch?v=" + videoId;
     }
 }

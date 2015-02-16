@@ -17,7 +17,7 @@ public class YoutubeUtil {
         if (context == null || videoId == null)
             return;
 
-        Uri video_uri = Uri.parse("http://www.youtube.com/watch?v=" + videoId);
+        Uri video_uri = Uri.parse(YouTubeUrlParser.getVidoeUrl(videoId));
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" + videoId));
         List<ResolveInfo> list = context.getPackageManager().queryIntentActivities(
                 intent,
