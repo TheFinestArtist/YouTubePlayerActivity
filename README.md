@@ -111,7 +111,7 @@ startActivity(intent);
 
 ## YoutubeUrlParser
 
-This util helps to retrieve youtube video id from youtube url or vice versa. [Reference](https://androidsnippets.wordpress.com/2012/10/11/how-to-get-extract-video-id-from-an-youtube-url-in-android-java)
+This util helps to retrieve youtube video id from youtube url or vice versa. [Reference](https://gist.github.com/afeld/1254889)
 
 ```java
 String vidoeId = YoutubeUrlParser.getVideoId(videoUrl);
