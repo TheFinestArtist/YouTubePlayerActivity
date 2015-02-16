@@ -45,12 +45,18 @@ Intent intent = new Intent(MainActivity.this, YouTubePlayerActivity.class);
 
 // Youtube video ID or Url (Required)
 intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_ID, "iS1g8G_njx8");
-intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_URL, "https://www.youtube.com/watch?v=iS1g8G_njx8");
+// These kind of url can be parsed!!
+// https://youtu.be/iS1g8G_njx8
+// https://www.youtube.com/watch?v=iS1g8G_njx8
+// https://www.youtube.com/watch?v=iS1g8G_njx8&vq=hd1080
+intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_URL, "https://youtu.be/iS1g8G_njx8");
 
-// Show audio interface when user adjust volume (true for default)
+// Show audio interface when user adjust volume
+// true for default
 intent.putExtra(YouTubePlayerActivity.EXTRA_SHOW_AUDIO_UI, true);
 
-// If the video is not playable, use Youtube app or Internet Browser to play it (true for default)
+// If the video is not playable, use Youtube app or Internet Browser to play it
+// true for default
 intent.putExtra(YouTubePlayerActivity.EXTRA_HANDLE_ERROR, true);
 
 // Animation when closing youtubeplayeractivity (none for default)

@@ -79,7 +79,9 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
         if (videoUrl != null)
             videoId = YouTubeUrlParser.getVideoId(videoUrl);
 
-        videoId = getIntent().getStringExtra(EXTRA_VIDEO_ID);
+        if (videoId == null)
+            videoId = getIntent().getStringExtra(EXTRA_VIDEO_ID);
+
         if (videoId == null)
             throw new NullPointerException("Video ID must not be null");
 

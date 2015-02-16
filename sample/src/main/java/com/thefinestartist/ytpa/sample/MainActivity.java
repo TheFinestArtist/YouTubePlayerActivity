@@ -32,7 +32,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, YouTubePlayerActivity.class);
-                intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_ID, "iS1g8G_njx8");
+                intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_URL, "https://youtu.be/iS1g8G_njx8");
                 intent.putExtra(YouTubePlayerActivity.EXTRA_SHOW_AUDIO_UI, true);
                 intent.putExtra(YouTubePlayerActivity.EXTRA_HANDLE_ERROR, true);
                 intent.putExtra(YouTubePlayerActivity.EXTRA_ANIM_ENTER, R.anim.fade_in);
