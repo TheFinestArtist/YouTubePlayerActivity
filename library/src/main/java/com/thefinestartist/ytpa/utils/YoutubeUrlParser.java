@@ -44,7 +44,7 @@ public class YouTubeUrlParser {
         return videoId;
     }
 
-    public static String getVidoeUrl(String vidoeId) {
+    public static String getVidoeUrl(String videoId) {
         return "http://www.youtube.com/watch?v=" + videoId;
     }
 }

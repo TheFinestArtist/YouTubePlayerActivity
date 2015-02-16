@@ -4,7 +4,7 @@ Simply pass a url to play youtube video on new activity. It supports screen orie
 
 
 #### Features
-* Orientation Problem (with Auto Rotation mode)
+* Orientation Support (with Auto Rotation mode)
 
     Auto-Rotation ON : You can either use sensor or YouTube full screen button.
 
@@ -14,6 +14,14 @@ Simply pass a url to play youtube video on new activity. It supports screen orie
 * Media Volume Support
 
     While watching YouTube Player, users should be able to set media volume!!!
+
+* Video Play Error Support
+
+    If the video is not playable, it send to youtube app or other browser which will might play it.
+
+* Animation Support
+
+    Activity closing animation can be customized.
 
 
 #### Set Up AndroidManifest.xml
@@ -55,7 +63,7 @@ startActivity(intent);
 
 ## YoutubeUrlParser
 
-This util helps to retrieve youtube video id from youtube url. [Reference](https://androidsnippets.wordpress.com/2012/10/11/how-to-get-extract-video-id-from-an-youtube-url-in-android-java)
+This util helps to retrieve youtube video id from youtube url or vice versa. [Reference](https://androidsnippets.wordpress.com/2012/10/11/how-to-get-extract-video-id-from-an-youtube-url-in-android-java)
 
 ```java
 String vidoeId = YoutubeUrlParser.getVideoId(videoUrl);
