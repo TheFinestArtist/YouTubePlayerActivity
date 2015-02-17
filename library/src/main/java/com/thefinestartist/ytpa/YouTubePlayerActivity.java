@@ -18,7 +18,10 @@ import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayer.ErrorReason;
 import com.google.android.youtube.player.YouTubePlayerView;
+import com.thefinestartist.ytpa.enums.Orientation;
+import com.thefinestartist.ytpa.enums.PlayerStyle;
 import com.thefinestartist.ytpa.utils.AudioUtil;
+import com.thefinestartist.ytpa.utils.StatusBarUtil;
 import com.thefinestartist.ytpa.utils.YouTubeUrlParser;
 import com.thefinestartist.ytpa.utils.YoutubeUtil;
 
@@ -34,7 +37,9 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
     public static final String EXTRA_VIDEO_ID = "video_id";
     public static final String EXTRA_VIDEO_URL = "video_url";
 
-    public static final String EXTRA_SCREEN_ORIENTATION = "screen_orientation";
+    public static final String EXTRA_PLAYER_STYLE = "player_style";
+
+    public static final String EXTRA_ORIENTATION = "orientation";
 
     public static final String EXTRA_SHOW_AUDIO_UI = "show_audio_ui";
 
@@ -45,6 +50,9 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
 
     private String googleApiKey;
     private String videoId;
+
+    private PlayerStyle playerStyle;
+    private Orientation orientation;
     private boolean showAudioUi;
     private boolean handleError;
     private int animEnter;
@@ -52,7 +60,7 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
 
     private YouTubePlayerView playerView;
     private YouTubePlayer player;
-    private boolean autoRotation;
+    private boolean systemAutoRotation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,11 +70,15 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
         playerView = new YouTubePlayerView(this);
         playerView.initialize(googleApiKey, this);
 
-        autoRotation = Settings.System.getInt(getContentResolver(),
+        systemAutoRotation = Settings.System.getInt(getContentResolver(),
                 Settings.System.ACCELEROMETER_ROTATION, 0) == 1;
 
         addContentView(playerView, new LayoutParams(LayoutParams.MATCH_PARENT,
                 LayoutParams.MATCH_PARENT));
+
+        playerView.setBackgroundResource(android.R.color.black);
+
+        StatusBarUtil.hide(this);
     }
 
     private void initialize() {
@@ -91,6 +103,8 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
         if (videoId == null)
             throw new NullPointerException("Video ID must not be null");
 
+        playerStyle = (PlayerStyle) getIntent().getSerializableExtra(EXTRA_PLAYER_STYLE);
+        orientation = (Orientation) getIntent().getSerializableExtra(EXTRA_ORIENTATION);
         showAudioUi = getIntent().getBooleanExtra(EXTRA_SHOW_AUDIO_UI, true);
         handleError = getIntent().getBooleanExtra(EXTRA_HANDLE_ERROR, true);
         animEnter = getIntent().getIntExtra(EXTRA_ANIM_ENTER, 0);
@@ -105,15 +119,39 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
         player.setOnFullscreenListener(this);
         player.setPlayerStateChangeListener(this);
 
-        if (autoRotation) {
-            player.addFullscreenControlFlag(YouTubePlayer.FULLSCREEN_FLAG_CONTROL_ORIENTATION
+//        switch (screenOrientation) {
+//            case AUTO:
+//                break;
+//            case AUTO_START_WITH_LANDSCAPE:
+//                setRequestedOrientation(LANDSCAPE_ORIENTATION);
+//                break;
+//            case AUTO_START_WITH_PORTRAIT:
+//                setRequestedOrientation(PORTRAIT_ORIENTATION);
+//                break;
+//        }
+
+        if (systemAutoRotation) {
+            player.setFullscreenControlFlags(YouTubePlayer.FULLSCREEN_FLAG_CONTROL_ORIENTATION
                     | YouTubePlayer.FULLSCREEN_FLAG_CONTROL_SYSTEM_UI
                     | YouTubePlayer.FULLSCREEN_FLAG_ALWAYS_FULLSCREEN_IN_LANDSCAPE
                     | YouTubePlayer.FULLSCREEN_FLAG_CUSTOM_LAYOUT);
         } else {
-            player.addFullscreenControlFlag(YouTubePlayer.FULLSCREEN_FLAG_CONTROL_ORIENTATION
+            player.setFullscreenControlFlags(YouTubePlayer.FULLSCREEN_FLAG_CONTROL_ORIENTATION
                     | YouTubePlayer.FULLSCREEN_FLAG_CONTROL_SYSTEM_UI
                     | YouTubePlayer.FULLSCREEN_FLAG_CUSTOM_LAYOUT);
+        }
+
+        switch (playerStyle) {
+            case CHROMELESS:
+                player.setPlayerStyle(YouTubePlayer.PlayerStyle.CHROMELESS);
+                break;
+            case MINIMAL:
+                player.setPlayerStyle(YouTubePlayer.PlayerStyle.MINIMAL);
+                break;
+            case DEFAULT:
+            default:
+                player.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
+                break;
         }
 
         if (!wasRestored)
@@ -205,9 +243,11 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
             AudioUtil.adjustMusicVolume(getApplicationContext(), true, showAudioUi);
+            StatusBarUtil.hide(this);
             return true;
         } else if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
             AudioUtil.adjustMusicVolume(getApplicationContext(), false, showAudioUi);
+            StatusBarUtil.hide(this);
             return true;
         }
         return super.onKeyDown(keyCode, event);

@@ -1,4 +1,6 @@
-# YouTubePlayerActivity [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-YouTubePlayerActivity-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1542) [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)](http://opensource.org/licenses/MIT)
+# YouTube Player Activity
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-YouTubePlayerActivity-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1542)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)](http://opensource.org/licenses/MIT)
 
 Simply pass a url to play youtube video on new activity. It supports screen orientation, media volume control and etc.
 
@@ -36,7 +38,7 @@ Easily reference the library in your Android projects using this dependency in y
 
 ```Gradle
 dependencies {
-    compile 'com.thefinestartist:ytpa:1.0.0' // Work in Process
+    compile 'com.thefinestartist:ytpa:0.9.1' // Work in Process
 }
 ```
 
@@ -74,7 +76,7 @@ It supports Android API 3+.
     android:name="com.thefinestartist.ytpa.YouTubePlayerActivity"
     android:configChanges="keyboardHidden|orientation|screenSize"
     android:screenOrientation="sensor"
-    android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+    android:theme="@style/Theme.YTPA.FullScreen" />
 
 <meta-data
     android:name="com.thefinestartist.ytpa.YouTubePlayerActivity.ApiKey"
@@ -92,6 +94,15 @@ intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_ID, "iS1g8G_njx8");
 // https://www.youtube.com/watch?v=iS1g8G_njx8
 // https://www.youtube.com/watch?v=iS1g8G_njx8&vq=hd1080
 intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_URL, "https://youtu.be/iS1g8G_njx8");
+
+// Youtube player style
+// DEFAULT as default
+intent.putExtra(YouTubePlayerActivity.EXTRA_PLAYER_STYLE, playerStyle);
+
+// Screen Orientation Setting
+// AUTO, AUTO_START_WITH_LANDSCAPE, AUTO_START_WITH_PORTRAIT, ONLY_LANDSCAPE, ONLY_PORTRAIT
+// AUTO for default
+intent.putExtra(YouTubePlayerActivity.EXTRA_SCREEN_ORIENTATION, ScreenOrientation.AUTO);
 
 // Show audio interface when user adjust volume
 // true for default

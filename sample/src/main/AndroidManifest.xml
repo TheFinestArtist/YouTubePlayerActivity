@@ -24,7 +24,7 @@
             android:name="com.thefinestartist.ytpa.YouTubePlayerActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="sensor"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
 
         <meta-data
             android:name="com.thefinestartist.ytpa.YouTubePlayerActivity.ApiKey"

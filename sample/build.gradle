@@ -36,8 +36,9 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(':library')
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile 'com.jakewharton:butterknife:5.1.2'
-    compile project(':library')
+    compile 'com.afollestad:material-dialogs:0.6.2.4'
     compile 'com.crashlytics.android:crashlytics:1.+'
 }

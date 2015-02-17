@@ -1,7 +1,17 @@
 <resources>
     <string name="app_name">Youtube Player</string>
     <string name="settings">SETTINGS</string>
-    <string name="extra_screen_orientation">EXTRA_SCREEN_ORIENTATION</string>
+    <string name="extra_screen_orientation">EXTRA_ORIENTATION</string>
     <string name="extra_show_audio_ui">EXTRA_SHOW_AUDIO_UI</string>
     <string name="extra_anim">EXTRA_ANIM</string>
+    <string name="screen_orientation">Screen Orientation</string>
+    <string name="choose">Choose</string>
+    <string name="show">SHOW</string>
+    <string name="dont_show">DONT SHOW</string>
+    <string name="volume_ui_control">Volume UI Control</string>
+    <string name="animation_on_close">Animation on close</string>
+    <string name="fade">FADE</string>
+    <string name="modal">MODAL</string>
+    <string name="extra_player_style">EXTRA_PLAYER_STYLE</string>
+    <string name="player_style">Player Style</string>
 </resources>

@@ -9,4 +9,5 @@
     <color name="icons">#FFFFFF</color>
     <color name="divider">#B6B6B6</color>
     <color name="selector">#0D9E9E9E</color>
+    <color name="selector_negative">#0DFFCDD2</color>
 </resources>

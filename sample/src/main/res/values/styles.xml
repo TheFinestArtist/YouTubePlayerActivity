@@ -9,6 +9,20 @@
         <item name="android:textColorPrimary">@color/primary_text</item>
         <item name="android:textColorSecondary">@color/secondary_text</item>
         <item name="windowActionBar">false</item>
+
+        <item name="md_background_color">@android:color/white</item>
+        <item name="md_title_color">@color/primary_text</item>
+        <item name="md_content_color">@color/secondary_text</item>
+        <item name="md_positive_color">@color/accent</item>
+        <item name="md_neutral_color">@color/accent</item>
+        <item name="md_negative_color">@color/primary_light</item>
+        <item name="md_item_color">@color/secondary_text</item>
+        <item name="md_divider_color">@color/divider</item>
+        <item name="md_list_selector">@drawable/selector</item>
+        <item name="md_btn_stacked_selector">@drawable/dialog_selector</item>
+        <item name="md_btn_positive_selector">@drawable/dialog_selector</item>
+        <item name="md_btn_neutral_selector">@drawable/dialog_selector</item>
+        <item name="md_btn_negative_selector">@drawable/dialog_selector_negative</item>
     </style>
 
 </resources>

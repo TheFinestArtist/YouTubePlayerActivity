@@ -46,6 +46,54 @@
                 android:includeFontPadding="false" />
 
             <LinearLayout
+                android:id="@+id/player_style_bt"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@drawable/selector"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical">
+
+                <View
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginLeft="16dp"
+                    android:background="@drawable/ic_player_style" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="16dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/player_style_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:textColor="?android:attr/textColorPrimary"
+                        android:textSize="16dp"
+                        android:text="DEFAULT"
+                        android:includeFontPadding="false" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="?android:attr/textColorSecondary"
+                        android:textSize="10dp"
+                        android:text="@string/extra_player_style"
+                        android:includeFontPadding="false" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="74dp"
+                android:background="@color/divider" />
+
+            <LinearLayout
                 android:id="@+id/screen_orientation_bt"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
@@ -170,7 +218,7 @@
                         android:layout_marginBottom="4dp"
                         android:textColor="?android:attr/textColorPrimary"
                         android:textSize="16dp"
-                        android:text="MODAL"
+                        android:text="FADE"
                         android:includeFontPadding="false" />
 
                     <TextView
