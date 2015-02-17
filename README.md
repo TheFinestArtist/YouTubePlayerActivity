@@ -38,7 +38,7 @@ Easily reference the library in your Android projects using this dependency in y
 
 ```Gradle
 dependencies {
-    compile 'com.thefinestartist:ytpa:0.9.1' // Work in Process
+    compile 'com.thefinestartist:ytpa:1.0.0' // Work in Process
 }
 ```
 
@@ -67,6 +67,10 @@ It supports Android API 3+.
 
     Activity closing animation can be customized.
 
+* Status Bar Support
+
+    On screen portrait mode, it removed status bar automatically.
+
 
 ## Set Up AndroidManifest.xml
 ```xml
@@ -76,7 +80,7 @@ It supports Android API 3+.
     android:name="com.thefinestartist.ytpa.YouTubePlayerActivity"
     android:configChanges="keyboardHidden|orientation|screenSize"
     android:screenOrientation="sensor"
-    android:theme="@style/Theme.YTPA.FullScreen" />
+    android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
 
 <meta-data
     android:name="com.thefinestartist.ytpa.YouTubePlayerActivity.ApiKey"
@@ -100,7 +104,7 @@ intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_URL, "https://youtu.be/iS1g8G_
 intent.putExtra(YouTubePlayerActivity.EXTRA_PLAYER_STYLE, playerStyle);
 
 // Screen Orientation Setting
-// AUTO, AUTO_START_WITH_LANDSCAPE, AUTO_START_WITH_PORTRAIT, ONLY_LANDSCAPE, ONLY_PORTRAIT
+// AUTO, AUTO_START_WITH_LANDSCAPE, ONLY_LANDSCAPE, ONLY_PORTRAIT
 // AUTO for default
 intent.putExtra(YouTubePlayerActivity.EXTRA_SCREEN_ORIENTATION, ScreenOrientation.AUTO);
 
