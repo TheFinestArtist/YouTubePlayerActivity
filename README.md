@@ -48,12 +48,15 @@ It supports Android API 3+.
 
 
 ## Features
-* Orientation Support (with Auto Rotation mode)
+* Orientation Support
 
-    Auto-Rotation ON : You can either use sensor or YouTube full screen button.
+    AUTO
 
-    Auto-Rotation OFF : You can just use YouTube full screen button.
+    AUTO_START_WITH_LANDSCAPE
 
+    ONLY_LANDSCAPE
+
+    ONLY_PORTRAIT
 
 * Media Volume Support
 
