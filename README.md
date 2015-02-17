@@ -87,7 +87,7 @@ It supports Android API 3+.
     android:value="your_google_api_key" />
 ```
 
-#### Usage
+## Usage
 ```java
 Intent intent = new Intent(MainActivity.this, YouTubePlayerActivity.class);
 
