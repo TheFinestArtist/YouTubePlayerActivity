@@ -14,7 +14,7 @@ You can download demo movie file here : [demo.mov](https://github.com/thefinesta
 
 It's also on Youtube:
 
-<a href="http://www.youtube.com/watch?v=myheMkavjzk">
+<a href="https://www.youtube.com/watch?v=5U-Yu_OZHes">
   <img alt="Youtube"
        src="https://github.com/thefinestartist/ytpa/blob/master/art/youtube.png" />
 </a>
