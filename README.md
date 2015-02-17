@@ -38,7 +38,7 @@ Easily reference the library in your Android projects using this dependency in y
 
 ```Gradle
 dependencies {
-    compile 'com.thefinestartist:ytpa:1.0.0' // Work in Process
+    compile 'com.thefinestartist:ytpa:1.0.0'
 }
 ```
 
