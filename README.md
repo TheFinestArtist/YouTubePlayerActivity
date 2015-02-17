@@ -6,11 +6,11 @@ Simply pass a url to play youtube video on new activity. It supports screen orie
 
 ## Preview
 
-![Preview](https://github.com/thefinestartist/ytpa/blob/master/art/preview.gif)
+![Preview](https://github.com/thefinestartist/YouTubePlayerActivity/blob/master/art/preview.gif)
 
 ## Sample Demo
 
-You can download demo movie file here : [demo.mov](https://github.com/thefinestartist/ytpa/raw/master/art/demo.mov)
+You can download demo movie file here : [demo.mov](https://github.com/thefinestartist/YouTubePlayerActivity/raw/master/art/demo.mov)
 
 It's also on Youtube:
 
@@ -21,7 +21,7 @@ It's also on Youtube:
 
 ## Sample Project
 
-You can download the latest sample APK from this repo here: [sample-release.apk](https://github.com/thefinestartist/ytpa/raw/master/sample/sample-release.apk)
+You can download the latest sample APK from this repo here: [sample-release.apk](https://github.com/thefinestartist/YouTubePlayerActivity/raw/master/sample/sample-release.apk)
 
 It's also on Google Play:
 
