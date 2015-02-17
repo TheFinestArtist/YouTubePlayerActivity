@@ -85,6 +85,7 @@ It supports Android API 3+.
     android:screenOrientation="sensor"
     android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
 
+<!--Need Your Google API Key-->
 <meta-data
     android:name="com.thefinestartist.ytpa.YouTubePlayerActivity.ApiKey"
     android:value="your_google_api_key" />
@@ -96,27 +97,20 @@ Intent intent = new Intent(MainActivity.this, YouTubePlayerActivity.class);
 
 // Youtube video ID or Url (Required)
 intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_ID, "iS1g8G_njx8");
-// These kind of url can be parsed!!
-// https://youtu.be/iS1g8G_njx8
-// https://www.youtube.com/watch?v=iS1g8G_njx8
-// https://www.youtube.com/watch?v=iS1g8G_njx8&vq=hd1080
 intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_URL, "https://youtu.be/iS1g8G_njx8");
 
-// Youtube player style
-// DEFAULT as default
+// Youtube player style (DEFAULT as default)
 intent.putExtra(YouTubePlayerActivity.EXTRA_PLAYER_STYLE, playerStyle);
 
-// Screen Orientation Setting
+// Screen Orientation Setting (AUTO for default)
 // AUTO, AUTO_START_WITH_LANDSCAPE, ONLY_LANDSCAPE, ONLY_PORTRAIT
-// AUTO for default
 intent.putExtra(YouTubePlayerActivity.EXTRA_SCREEN_ORIENTATION, ScreenOrientation.AUTO);
 
-// Show audio interface when user adjust volume
-// true for default
+// Show audio interface when user adjust volume (true for default)
 intent.putExtra(YouTubePlayerActivity.EXTRA_SHOW_AUDIO_UI, true);
 
 // If the video is not playable, use Youtube app or Internet Browser to play it
-// true for default
+// (true for default)
 intent.putExtra(YouTubePlayerActivity.EXTRA_HANDLE_ERROR, true);
 
 // Animation when closing youtubeplayeractivity (none for default)
