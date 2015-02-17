@@ -16,7 +16,7 @@ It's also on Youtube:
 
 <a href="https://www.youtube.com/watch?v=5U-Yu_OZHes">
   <img alt="Youtube"
-       src="https://github.com/thefinestartist/ytpa/blob/master/art/youtube.png" />
+       src="https://github.com/thefinestartist/YouTubePlayerActivity/blob/master/art/youtube.png" />
 </a>
 
 ## Sample Project
