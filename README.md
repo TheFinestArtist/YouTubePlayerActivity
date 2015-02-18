@@ -1,8 +1,10 @@
 # YouTube Player Activity
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-YouTubePlayerActivity-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1542)
+[![Platform](https://img.shields.io/badge/platform-android-green.svg)]
+[![API](https://img.shields.io/badge/API-7%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=7)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)](http://opensource.org/licenses/MIT)
 
-Simply pass a url to play youtube video on new activity. It supports screen orientation, media volume control and etc.
+Simply pass a url to play youtube video in new activity. It supports screen orientation, media volume control and etc.
 
 ## Preview
 
@@ -100,7 +102,7 @@ intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_ID, "iS1g8G_njx8");
 intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_URL, "https://youtu.be/iS1g8G_njx8");
 
 // Youtube player style (DEFAULT as default)
-intent.putExtra(YouTubePlayerActivity.EXTRA_PLAYER_STYLE, PlayerStyle.DEFAULT);
+intent.putExtra(YouTubePlayerActivity.EXTRA_PLAYER_STYLE, YouTubePlayer.PlayerStyle.DEFAULT);
 
 // Screen Orientation Setting (AUTO for default)
 // AUTO, AUTO_START_WITH_LANDSCAPE, ONLY_LANDSCAPE, ONLY_PORTRAIT
