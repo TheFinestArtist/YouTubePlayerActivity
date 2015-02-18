@@ -19,7 +19,6 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayer.ErrorReason;
 import com.google.android.youtube.player.YouTubePlayerView;
 import com.thefinestartist.ytpa.enums.Orientation;
-import com.thefinestartist.ytpa.enums.PlayerStyle;
 import com.thefinestartist.ytpa.utils.AudioUtil;
 import com.thefinestartist.ytpa.utils.StatusBarUtil;
 import com.thefinestartist.ytpa.utils.YouTubeUrlParser;
@@ -51,7 +50,7 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
     private String googleApiKey;
     private String videoId;
 
-    private PlayerStyle playerStyle;
+    private YouTubePlayer.PlayerStyle playerStyle;
     private Orientation orientation;
     private boolean showAudioUi;
     private boolean handleError;
@@ -99,8 +98,14 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
         if (videoId == null)
             throw new NullPointerException("Video ID must not be null");
 
-        playerStyle = (PlayerStyle) getIntent().getSerializableExtra(EXTRA_PLAYER_STYLE);
+        playerStyle = (YouTubePlayer.PlayerStyle) getIntent().getSerializableExtra(EXTRA_PLAYER_STYLE);
+        if (playerStyle == null)
+            playerStyle = YouTubePlayer.PlayerStyle.DEFAULT;
+
         orientation = (Orientation) getIntent().getSerializableExtra(EXTRA_ORIENTATION);
+        if (orientation == null)
+            orientation = Orientation.AUTO;
+
         showAudioUi = getIntent().getBooleanExtra(EXTRA_SHOW_AUDIO_UI, true);
         handleError = getIntent().getBooleanExtra(EXTRA_HANDLE_ERROR, true);
         animEnter = getIntent().getIntExtra(EXTRA_ANIM_ENTER, 0);

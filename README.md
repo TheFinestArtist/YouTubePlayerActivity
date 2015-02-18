@@ -100,11 +100,11 @@ intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_ID, "iS1g8G_njx8");
 intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_URL, "https://youtu.be/iS1g8G_njx8");
 
 // Youtube player style (DEFAULT as default)
-intent.putExtra(YouTubePlayerActivity.EXTRA_PLAYER_STYLE, playerStyle);
+intent.putExtra(YouTubePlayerActivity.EXTRA_PLAYER_STYLE, PlayerStyle.DEFAULT);
 
 // Screen Orientation Setting (AUTO for default)
 // AUTO, AUTO_START_WITH_LANDSCAPE, ONLY_LANDSCAPE, ONLY_PORTRAIT
-intent.putExtra(YouTubePlayerActivity.EXTRA_SCREEN_ORIENTATION, ScreenOrientation.AUTO);
+intent.putExtra(YouTubePlayerActivity.EXTRA_ORIENTATION, Orientation.AUTO);
 
 // Show audio interface when user adjust volume (true for default)
 intent.putExtra(YouTubePlayerActivity.EXTRA_SHOW_AUDIO_UI, true);

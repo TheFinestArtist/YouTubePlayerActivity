@@ -10,9 +10,9 @@ import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.crashlytics.android.Crashlytics;
+import com.google.android.youtube.player.YouTubePlayer;
 import com.thefinestartist.ytpa.YouTubePlayerActivity;
 import com.thefinestartist.ytpa.enums.Orientation;
-import com.thefinestartist.ytpa.enums.PlayerStyle;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -40,7 +40,7 @@ public class MainActivity extends ActionBarActivity {
     @InjectView(R.id.animation_tv)
     TextView animationTv;
 
-    PlayerStyle playerStyle;
+    YouTubePlayer.PlayerStyle playerStyle;
     Orientation orientation;
     boolean showAudioUi;
     boolean showFadeAnim;
@@ -53,7 +53,7 @@ public class MainActivity extends ActionBarActivity {
         ButterKnife.inject(this);
         setSupportActionBar(toolbar);
 
-        playerStyle = PlayerStyle.DEFAULT;
+//        playerStyle = YouTubePlayer.PlayerStyle.DEFAULT;
         orientation = Orientation.AUTO;
         showAudioUi = true;
         showFadeAnim = true;
@@ -62,7 +62,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, YouTubePlayerActivity.class);
-                intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_URL, "https://www.youtube.com/watch?v=7mJLmpuxzaQ");
+                intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_URL, "https://www.youtube.com/watch?v=iS1g8G_njx8");
                 intent.putExtra(YouTubePlayerActivity.EXTRA_PLAYER_STYLE, playerStyle);
                 intent.putExtra(YouTubePlayerActivity.EXTRA_ORIENTATION, orientation);
                 intent.putExtra(YouTubePlayerActivity.EXTRA_SHOW_AUDIO_UI, showAudioUi);
@@ -88,7 +88,7 @@ public class MainActivity extends ActionBarActivity {
                         .itemsCallbackSingleChoice(playerStyle.ordinal(), new MaterialDialog.ListCallback() {
                             @Override
                             public void onSelection(MaterialDialog materialDialog, View view, int which, CharSequence charSequence) {
-                                playerStyle = PlayerStyle.values()[which];
+                                playerStyle = YouTubePlayer.PlayerStyle.values()[which];
                                 playerStyleTv.setText(playerStyle.name());
                             }
                         })
@@ -161,7 +161,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private String[] getPlayerStyleNames() {
-        PlayerStyle[] states = PlayerStyle.values();
+        YouTubePlayer.PlayerStyle[] states = YouTubePlayer.PlayerStyle.values();
         String[] names = new String[states.length];
         for (int i = 0; i < states.length; i++)
             names[i] = states[i].name();

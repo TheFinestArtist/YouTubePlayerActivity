@@ -9,7 +9,7 @@ android {
         minSdkVersion 7
         targetSdkVersion 21
         versionCode 1
-        versionName "1.0.0"
+        versionName "1.1.0"
     }
     lintOptions {
         abortOnError false
@@ -25,7 +25,7 @@ publish {
     userOrg = 'thefinestartist'
     groupId = 'com.thefinestartist'
     artifactId = 'ytpa'
-    version = '1.0.0'
+    version = '1.1.0'
     description = 'Simply pass a url to play youtube video on new activity. It supports screen orientation, media volume control and etc.'
     website = 'https://github.com/TheFinestArtist/YouTubePlayerActivity'
 }
