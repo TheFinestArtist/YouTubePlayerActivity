@@ -46,7 +46,7 @@ dependencies {
 
 ## Requirements
 
-It supports Android API 3+.
+It supports Android API 7+.
 
 
 ## Features
