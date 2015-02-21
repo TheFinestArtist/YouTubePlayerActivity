@@ -53,7 +53,7 @@ public class MainActivity extends ActionBarActivity {
         ButterKnife.inject(this);
         setSupportActionBar(toolbar);
 
-//        playerStyle = YouTubePlayer.PlayerStyle.DEFAULT;
+        playerStyle = YouTubePlayer.PlayerStyle.DEFAULT;
         orientation = Orientation.AUTO;
         showAudioUi = true;
         showFadeAnim = true;
