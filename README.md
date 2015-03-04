@@ -4,7 +4,7 @@
 [![API](https://img.shields.io/badge/API-7%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=7)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)](http://opensource.org/licenses/MIT)
 
-Simply pass a url to play youtube video in new activity. It supports screen orientation, media volume control and etc.
+Simply pass an url to play youtube video in new activity. It supports screen orientation, media volume control and etc.
 
 ## Preview
 
