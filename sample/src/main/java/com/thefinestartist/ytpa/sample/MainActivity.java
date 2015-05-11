@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, YouTubePlayerActivity.class);
-                intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_URL, "https://www.youtube.com/watch?v=1Jn8BLQy6vA");
+                intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_URL, "https://www.youtube.com/watch?v=iS1g8G_njx8");
                 intent.putExtra(YouTubePlayerActivity.EXTRA_PLAYER_STYLE, playerStyle);
                 intent.putExtra(YouTubePlayerActivity.EXTRA_ORIENTATION, orientation);
                 intent.putExtra(YouTubePlayerActivity.EXTRA_SHOW_AUDIO_UI, showAudioUi);
