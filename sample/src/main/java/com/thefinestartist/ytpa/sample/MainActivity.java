@@ -2,7 +2,7 @@ package com.thefinestartist.ytpa.sample;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageButton;
@@ -17,7 +17,7 @@ import com.thefinestartist.ytpa.enums.Orientation;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     @InjectView(R.id.toolbar)
     Toolbar toolbar;
@@ -62,7 +62,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, YouTubePlayerActivity.class);
-                intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_URL, "https://www.youtube.com/watch?v=iS1g8G_njx8");
+                intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_URL, "https://www.youtube.com/watch?v=1Jn8BLQy6vA");
                 intent.putExtra(YouTubePlayerActivity.EXTRA_PLAYER_STYLE, playerStyle);
                 intent.putExtra(YouTubePlayerActivity.EXTRA_ORIENTATION, orientation);
                 intent.putExtra(YouTubePlayerActivity.EXTRA_SHOW_AUDIO_UI, showAudioUi);
@@ -85,11 +85,12 @@ public class MainActivity extends ActionBarActivity {
                 new MaterialDialog.Builder(MainActivity.this)
                         .title(getString(R.string.player_style))
                         .items(getPlayerStyleNames())
-                        .itemsCallbackSingleChoice(playerStyle.ordinal(), new MaterialDialog.ListCallback() {
+                        .itemsCallbackSingleChoice(playerStyle.ordinal(), new MaterialDialog.ListCallbackSingleChoice() {
                             @Override
-                            public void onSelection(MaterialDialog materialDialog, View view, int which, CharSequence charSequence) {
+                            public boolean onSelection(MaterialDialog materialDialog, View view, int which, CharSequence charSequence) {
                                 playerStyle = YouTubePlayer.PlayerStyle.values()[which];
                                 playerStyleTv.setText(playerStyle.name());
+                                return true;
                             }
                         })
                         .positiveText(getString(R.string.choose))
@@ -103,11 +104,12 @@ public class MainActivity extends ActionBarActivity {
                 new MaterialDialog.Builder(MainActivity.this)
                         .title(getString(R.string.screen_orientation))
                         .items(getScreenOrientationNames())
-                        .itemsCallbackSingleChoice(orientation.ordinal(), new MaterialDialog.ListCallback() {
+                        .itemsCallbackSingleChoice(orientation.ordinal(), new MaterialDialog.ListCallbackSingleChoice() {
                             @Override
-                            public void onSelection(MaterialDialog materialDialog, View view, int which, CharSequence charSequence) {
+                            public boolean onSelection(MaterialDialog materialDialog, View view, int which, CharSequence charSequence) {
                                 orientation = Orientation.values()[which];
                                 screenOrientationTv.setText(orientation.name());
+                                return true;
                             }
                         })
                         .positiveText(getString(R.string.choose))
@@ -121,11 +123,12 @@ public class MainActivity extends ActionBarActivity {
                 new MaterialDialog.Builder(MainActivity.this)
                         .title(getString(R.string.volume_ui_control))
                         .items(new String[]{getString(R.string.show), getString(R.string.dont_show)})
-                        .itemsCallbackSingleChoice(showAudioUi ? 0 : 1, new MaterialDialog.ListCallback() {
+                        .itemsCallbackSingleChoice(showAudioUi ? 0 : 1, new MaterialDialog.ListCallbackSingleChoice() {
                             @Override
-                            public void onSelection(MaterialDialog materialDialog, View view, int which, CharSequence charSequence) {
+                            public boolean onSelection(MaterialDialog materialDialog, View view, int which, CharSequence charSequence) {
                                 showAudioUi = which == 0;
                                 volumeTv.setText(showAudioUi ? getString(R.string.show) : getString(R.string.dont_show));
+                                return true;
                             }
                         })
                         .positiveText(getString(R.string.choose))
@@ -139,11 +142,12 @@ public class MainActivity extends ActionBarActivity {
                 new MaterialDialog.Builder(MainActivity.this)
                         .title(getString(R.string.animation_on_close))
                         .items(new String[]{getString(R.string.fade), getString(R.string.modal)})
-                        .itemsCallbackSingleChoice(showFadeAnim ? 0 : 1, new MaterialDialog.ListCallback() {
+                        .itemsCallbackSingleChoice(showFadeAnim ? 0 : 1, new MaterialDialog.ListCallbackSingleChoice() {
                             @Override
-                            public void onSelection(MaterialDialog materialDialog, View view, int which, CharSequence charSequence) {
+                            public boolean onSelection(MaterialDialog materialDialog, View view, int which, CharSequence charSequence) {
                                 showFadeAnim = which == 0;
                                 animationTv.setText(showFadeAnim ? getString(R.string.fade) : getString(R.string.modal));
+                                return true;
                             }
                         })
                         .positiveText(getString(R.string.choose))

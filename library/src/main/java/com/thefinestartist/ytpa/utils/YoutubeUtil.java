@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by TheFinestArtist on 2/16/15.
  */
-public class YoutubeUtil {
+public class YouTubeUtil {
 
     public static void startVideo(Context context, String videoId) {
         if (context == null || videoId == null)

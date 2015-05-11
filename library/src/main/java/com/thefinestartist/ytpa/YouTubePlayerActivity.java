@@ -22,7 +22,7 @@ import com.thefinestartist.ytpa.enums.Orientation;
 import com.thefinestartist.ytpa.utils.AudioUtil;
 import com.thefinestartist.ytpa.utils.StatusBarUtil;
 import com.thefinestartist.ytpa.utils.YouTubeUrlParser;
-import com.thefinestartist.ytpa.utils.YoutubeUtil;
+import com.thefinestartist.ytpa.utils.YouTubeUtil;
 
 public class YouTubePlayerActivity extends YouTubeBaseActivity implements
         YouTubePlayer.OnInitializedListener,
@@ -238,7 +238,7 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
     public void onError(ErrorReason reason) {
         Log.e("onError", "onError : " + reason.name());
         if (handleError && ErrorReason.NOT_PLAYABLE.equals(reason))
-            YoutubeUtil.startVideo(this, videoId);
+            YouTubeUtil.startVideo(this, videoId);
     }
 
     @Override
