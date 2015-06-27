@@ -40,7 +40,7 @@ Easily reference the library in your Android projects using this dependency in y
 
 ```Gradle
 dependencies {
-    compile 'com.thefinestartist:ytpa:1.1.1'
+    compile 'com.thefinestartist:ytpa:1.2.0'
 }
 ```
 
@@ -51,30 +51,22 @@ It supports Android API 7+.
 
 ## Features
 * Orientation Support
-
-    AUTO
-
-    AUTO_START_WITH_LANDSCAPE
-
-    ONLY_LANDSCAPE
-
-    ONLY_PORTRAIT
+    * AUTO
+    * AUTO_START_WITH_LANDSCAPE
+    * ONLY_LANDSCAPE
+    * ONLY_PORTRAIT
 
 * Media Volume Support
-
-    While watching YouTube Player, users should be able to set media volume!!!
+    * While watching YouTube Player, users should be able to set media volume!!!
 
 * Video Play Error Support
-
-    If the video is not playable, it send to youtube app or other browser which will might play it.
+    * If the video is not playable, it send to youtube app or other browser which will might play it.
 
 * Animation Support
-
-    Activity closing animation can be customized.
+    * Activity closing animation can be customized.
 
 * Status Bar Support
-
-    On screen portrait mode, it removed status bar automatically.
+    * On screen portrait mode, it removed status bar automatically.
 
 
 ## Set Up AndroidManifest.xml
@@ -97,9 +89,8 @@ It supports Android API 7+.
 ```java
 Intent intent = new Intent(MainActivity.this, YouTubePlayerActivity.class);
 
-// Youtube video ID or Url (Required)
+// Youtube video ID (Required, You can use YouTubeUrlParser to parse Video Id from url)
 intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_ID, "iS1g8G_njx8");
-intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_URL, "https://youtu.be/iS1g8G_njx8");
 
 // Youtube player style (DEFAULT as default)
 intent.putExtra(YouTubePlayerActivity.EXTRA_PLAYER_STYLE, YouTubePlayer.PlayerStyle.DEFAULT);
@@ -123,13 +114,29 @@ intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 startActivity(intent);
 ```
 
-## YoutubeUrlParser
+## YouTubeUrlParser
 
 This util helps to retrieve youtube video id from youtube url or vice versa. [Reference](https://gist.github.com/afeld/1254889)
 
 ```java
-String vidoeId = YoutubeUrlParser.getVideoId(videoUrl);
-String vidoeUrl = YoutubeUrlParser.getVideoId(videoId);
+String vidoeId = YouTubeUrlParser.getVideoId(videoUrl);
+String vidoeUrl = YouTubeUrlParser.getVideoUrl(videoId);
+```
+
+## YouTubeApp
+
+This util helps to open Youtube App and play specific video.
+
+```java
+YouTubeApp.startVideo(context, videoId);
+```
+
+## YouTubeThumbnail
+
+This util returns Youtube thumbnail image url.
+
+```java
+YouTubeThumbnail.getUrlFromVideoId(videoId, Quality.HIGH);
 ```
 
 

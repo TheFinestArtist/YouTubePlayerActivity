@@ -6,21 +6,28 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.crashlytics.android.Crashlytics;
 import com.google.android.youtube.player.YouTubePlayer;
+import com.squareup.picasso.Picasso;
 import com.thefinestartist.ytpa.YouTubePlayerActivity;
 import com.thefinestartist.ytpa.enums.Orientation;
+import com.thefinestartist.ytpa.enums.Quality;
+import com.thefinestartist.ytpa.utils.YouTubeThumbnail;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends AppCompatActivity {
 
     @InjectView(R.id.toolbar)
     Toolbar toolbar;
+    @InjectView(R.id.thumbnail)
+    ImageView thumbnail;
     @InjectView(R.id.play_bt)
     ImageButton play;
     @InjectView(R.id.player_style_bt)
@@ -45,10 +52,12 @@ public class MainActivity extends AppCompatActivity {
     boolean showAudioUi;
     boolean showFadeAnim;
 
+    private static String VIDEO_ID = "iS1g8G_njx8";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Crashlytics.start(this);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
         setSupportActionBar(toolbar);
@@ -58,11 +67,17 @@ public class MainActivity extends AppCompatActivity {
         showAudioUi = true;
         showFadeAnim = true;
 
+        Picasso.with(this)
+                .load(YouTubeThumbnail.getUrlFromVideoId(VIDEO_ID, Quality.HIGH))
+                .fit()
+                .centerCrop()
+                .into(thumbnail);
+
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, YouTubePlayerActivity.class);
-                intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_URL, "https://www.youtube.com/watch?v=iS1g8G_njx8");
+                intent.putExtra(YouTubePlayerActivity.EXTRA_VIDEO_ID, VIDEO_ID);
                 intent.putExtra(YouTubePlayerActivity.EXTRA_PLAYER_STYLE, playerStyle);
                 intent.putExtra(YouTubePlayerActivity.EXTRA_ORIENTATION, orientation);
                 intent.putExtra(YouTubePlayerActivity.EXTRA_SHOW_AUDIO_UI, showAudioUi);

@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.FrameLayout.LayoutParams;
@@ -21,8 +22,7 @@ import com.google.android.youtube.player.YouTubePlayerView;
 import com.thefinestartist.ytpa.enums.Orientation;
 import com.thefinestartist.ytpa.utils.AudioUtil;
 import com.thefinestartist.ytpa.utils.StatusBarUtil;
-import com.thefinestartist.ytpa.utils.YouTubeUrlParser;
-import com.thefinestartist.ytpa.utils.YouTubeUtil;
+import com.thefinestartist.ytpa.utils.YouTubeApp;
 
 public class YouTubePlayerActivity extends YouTubeBaseActivity implements
         YouTubePlayer.OnInitializedListener,
@@ -31,10 +31,9 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
 
     private static final int RECOVERY_DIALOG_REQUEST = 1;
 
-    public static final String META_DATA_NAME = "com.thefinestartist.ytpa.YouTubePlayerActivity.ApiKey";
+    private static final String META_DATA_NAME = "com.thefinestartist.ytpa.YouTubePlayerActivity.ApiKey";
 
     public static final String EXTRA_VIDEO_ID = "video_id";
-    public static final String EXTRA_VIDEO_URL = "video_url";
 
     public static final String EXTRA_PLAYER_STYLE = "player_style";
 
@@ -88,13 +87,7 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
         if (googleApiKey == null)
             throw new NullPointerException("Google API key must not be null. Set your api key as meta data in AndroidManifest.xml file.");
 
-        String videoUrl = getIntent().getStringExtra(EXTRA_VIDEO_URL);
-        if (videoUrl != null)
-            videoId = YouTubeUrlParser.getVideoId(videoUrl);
-
-        if (videoId == null)
-            videoId = getIntent().getStringExtra(EXTRA_VIDEO_ID);
-
+        videoId = getIntent().getStringExtra(EXTRA_VIDEO_ID);
         if (videoId == null)
             throw new NullPointerException("Video ID must not be null");
 
@@ -238,7 +231,7 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
     public void onError(ErrorReason reason) {
         Log.e("onError", "onError : " + reason.name());
         if (handleError && ErrorReason.NOT_PLAYABLE.equals(reason))
-            YouTubeUtil.startVideo(this, videoId);
+            YouTubeApp.startVideo(this, videoId);
     }
 
     @Override
@@ -264,7 +257,7 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
 
     // Audio Managing
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
+    public boolean onKeyDown(int keyCode, @NonNull KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
             AudioUtil.adjustMusicVolume(getApplicationContext(), true, showAudioUi);
             StatusBarUtil.hide(this);
