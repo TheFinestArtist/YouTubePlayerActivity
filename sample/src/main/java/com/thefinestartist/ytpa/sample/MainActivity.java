@@ -2,6 +2,7 @@ package com.thefinestartist.ytpa.sample;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -18,33 +19,34 @@ import com.thefinestartist.ytpa.enums.Orientation;
 import com.thefinestartist.ytpa.enums.Quality;
 import com.thefinestartist.ytpa.utils.YouTubeThumbnail;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.Bind;
 import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends AppCompatActivity {
 
-    @InjectView(R.id.toolbar)
+    @Bind(R.id.toolbar)
     Toolbar toolbar;
-    @InjectView(R.id.thumbnail)
+    @Bind(R.id.thumbnail)
     ImageView thumbnail;
-    @InjectView(R.id.play_bt)
+    @Bind(R.id.play_bt)
     ImageButton play;
-    @InjectView(R.id.player_style_bt)
+    @Bind(R.id.player_style_bt)
     View playerStyleBt;
-    @InjectView(R.id.player_style_tv)
+    @Bind(R.id.player_style_tv)
     TextView playerStyleTv;
-    @InjectView(R.id.screen_orientation_bt)
+    @Bind(R.id.screen_orientation_bt)
     View screenOrientationBt;
-    @InjectView(R.id.screen_orientation_tv)
+    @Bind(R.id.screen_orientation_tv)
     TextView screenOrientationTv;
-    @InjectView(R.id.volume_bt)
+    @Bind(R.id.volume_bt)
     View volumeBt;
-    @InjectView(R.id.volume_tv)
+    @Bind(R.id.volume_tv)
     TextView volumeTv;
-    @InjectView(R.id.animation_bt)
+    @Bind(R.id.animation_bt)
     View animationBt;
-    @InjectView(R.id.animation_tv)
+    @Bind(R.id.animation_tv)
     TextView animationTv;
 
     YouTubePlayer.PlayerStyle playerStyle;
@@ -59,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
 
         playerStyle = YouTubePlayer.PlayerStyle.DEFAULT;
@@ -169,6 +171,17 @@ public class MainActivity extends AppCompatActivity {
                         .show();
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                AdHelper.popUpAd(MainActivity.this);
+            }
+        }, 1000 * 10);
     }
 
     private String[] getScreenOrientationNames() {

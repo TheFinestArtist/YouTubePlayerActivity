@@ -12,12 +12,13 @@ apply plugin: 'io.fabric'
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
+    maven { url "https://jitpack.io" }
 }
 
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
@@ -27,9 +28,9 @@ android {
     defaultConfig {
         applicationId "com.thefinestartist.ytpa.sample"
         minSdkVersion 9
-        targetSdkVersion 22
-        versionCode 6
-        versionName "1.5.0"
+        targetSdkVersion 23
+        versionCode 7
+        versionName "1.6.0"
     }
     buildTypes {
         release {
@@ -42,12 +43,17 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':library')
-    compile 'com.android.support:appcompat-v7:22.0.+'
-    compile 'com.jakewharton:butterknife:6.+'
-    compile 'com.afollestad:material-dialogs:0.7.3.+'
-    compile 'com.google.android.gms:play-services-ads:7.+'
-    compile 'com.squareup.picasso:picasso:2.+'
-    compile('com.crashlytics.sdk.android:crashlytics:2.4.0@aar') {
+    compile 'com.android.support:appcompat-v7:23.0.1'
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile('com.afollestad.material-dialogs:core:0.8.1.0@aar') {
+        transitive = true
+    }
+    compile('com.afollestad.material-dialogs:commons:0.8.1.0@aar') {
+        transitive = true
+    }
+    compile 'com.google.android.gms:play-services-ads:8.1.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile('com.crashlytics.sdk.android:crashlytics:2.5.2@aar') {
         transitive = true;
     }
 }

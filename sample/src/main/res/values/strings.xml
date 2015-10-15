@@ -14,4 +14,5 @@
     <string name="modal">MODAL</string>
     <string name="extra_player_style">EXTRA_PLAYER_STYLE</string>
     <string name="player_style">Player Style</string>
+    <string name="interstitial_ad_unit_id">ca-app-pub-8256229529844462/4165015234</string>
 </resources>
