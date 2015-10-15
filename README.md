@@ -40,7 +40,7 @@ Easily reference the library in your Android projects using this dependency in y
 
 ```Gradle
 dependencies {
-    compile 'com.thefinestartist:ytpa:1.2.0'
+    compile 'com.thefinestartist:ytpa:1.2.1'
 }
 ```
 
