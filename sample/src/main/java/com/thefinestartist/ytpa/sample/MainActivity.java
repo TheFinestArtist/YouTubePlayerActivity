@@ -91,8 +91,8 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra(YouTubePlayerActivity.EXTRA_ANIM_ENTER, R.anim.modal_close_enter);
                     intent.putExtra(YouTubePlayerActivity.EXTRA_ANIM_EXIT, R.anim.modal_close_exit);
                 }
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivityForResult(intent, 1);
             }
         });
 
@@ -174,14 +174,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                AdHelper.popUpAd(MainActivity.this);
-            }
-        }, 1000 * 10);
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1)
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    AdHelper.popUpAd(MainActivity.this);
+                }
+            }, 1000 * 50);
     }
 
     private String[] getScreenOrientationNames() {

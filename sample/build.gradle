@@ -29,8 +29,8 @@ android {
         applicationId "com.thefinestartist.ytpa.sample"
         minSdkVersion 9
         targetSdkVersion 23
-        versionCode 7
-        versionName "1.6.0"
+        versionCode 8
+        versionName "1.6.1"
     }
     buildTypes {
         release {
