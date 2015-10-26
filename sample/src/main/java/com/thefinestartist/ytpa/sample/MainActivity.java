@@ -173,17 +173,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1)
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    AdHelper.popUpAd(MainActivity.this);
-                }
-            }, 1000 * 50);
-    }
-
     private String[] getScreenOrientationNames() {
         Orientation[] states = Orientation.values();
         String[] names = new String[states.length];
@@ -198,5 +187,34 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < states.length; i++)
             names[i] = states[i].name();
         return names;
+    }
+
+
+    private boolean advertised = false;
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) {
+            advertised = true;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    AdHelper.popUpAd(MainActivity.this);
+                }
+            }, 1000 * 5);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (!advertised)
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    AdHelper.popUpAd(MainActivity.this);
+                }
+            }, 1000 * 10);
     }
 }
