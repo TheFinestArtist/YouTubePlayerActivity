@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     Orientation orientation;
     boolean showAudioUi;
     boolean showFadeAnim;
+    private boolean advertised = false;
 
     private static String VIDEO_ID = "iS1g8G_njx8";
 
@@ -188,10 +189,6 @@ public class MainActivity extends AppCompatActivity {
             names[i] = states[i].name();
         return names;
     }
-
-
-    private boolean advertised = false;
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

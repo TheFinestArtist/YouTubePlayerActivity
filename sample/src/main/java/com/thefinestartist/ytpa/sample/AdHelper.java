@@ -13,6 +13,9 @@ import com.google.android.gms.ads.InterstitialAd;
  */
 public class AdHelper {
 
+    private static InterstitialAd interstitial = null;
+    private static final Object lock = new Object();
+
     public static void loadBannerAd(AdView adView) {
         try {
             adView.loadAd(new AdRequest.Builder()
@@ -26,9 +29,6 @@ public class AdHelper {
             Crashlytics.logException(e);
         }
     }
-
-    private static InterstitialAd interstitial = null;
-    private static final Object lock = new Object();
 
     private static InterstitialAd getInstance(final Context context) {
         synchronized (lock) {
