@@ -8,8 +8,12 @@ import com.thefinestartist.ytpa.enums.Quality;
  * Created by TheFinestArtist on 6/27/15.
  */
 public class YouTubeThumbnail {
+
     public static final String IMG_YOUTUBE_COM_VI = "http://img.youtube.com/vi/";
-    //    Each YouTube video has 4 generated images. They are predictably formatted as follows:
+
+    private YouTubeThumbnail() {}
+
+//    Each YouTube video has 4 generated images. They are predictably formatted as follows:
 //
 //    http://img.youtube.com/vi/<insert-youtube-video-id-here>/0.jpg
 //    http://img.youtube.com/vi/<insert-youtube-video-id-here>/1.jpg
