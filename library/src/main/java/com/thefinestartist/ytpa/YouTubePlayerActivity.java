@@ -189,9 +189,8 @@ public class YouTubePlayerActivity extends YouTubeBaseActivity implements
                 if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
                     if (player != null)
                         player.setFullscreen(true);
-                } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-                    if (player != null)
-                        player.setFullscreen(false);
+                } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT && player != null) {
+                    player.setFullscreen(false);
                 }
                 break;
             case ONLY_LANDSCAPE:

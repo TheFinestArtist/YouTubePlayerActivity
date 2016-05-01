@@ -8,7 +8,8 @@ import com.thefinestartist.ytpa.enums.Quality;
  * Created by TheFinestArtist on 6/27/15.
  */
 public class YouTubeThumbnail {
-//    Each YouTube video has 4 generated images. They are predictably formatted as follows:
+    public static final String IMG_YOUTUBE_COM_VI = "http://img.youtube.com/vi/";
+    //    Each YouTube video has 4 generated images. They are predictably formatted as follows:
 //
 //    http://img.youtube.com/vi/<insert-youtube-video-id-here>/0.jpg
 //    http://img.youtube.com/vi/<insert-youtube-video-id-here>/1.jpg
@@ -46,24 +47,24 @@ public class YouTubeThumbnail {
     public static String getUrlFromVideoId(@NonNull String videoId, @NonNull Quality quality) {
         switch (quality) {
             case FIRST:
-                return "http://img.youtube.com/vi/" + videoId + "/0.jpg";
+                return IMG_YOUTUBE_COM_VI + videoId + "/0.jpg";
             case SECOND:
-                return "http://img.youtube.com/vi/" + videoId + "/1.jpg";
+                return IMG_YOUTUBE_COM_VI + videoId + "/1.jpg";
             case THIRD:
-                return "http://img.youtube.com/vi/" + videoId + "/2.jpg";
+                return IMG_YOUTUBE_COM_VI + videoId + "/2.jpg";
             case FOURTH:
-                return "http://img.youtube.com/vi/" + videoId + "/3.jpg";
+                return IMG_YOUTUBE_COM_VI + videoId + "/3.jpg";
             case MAXIMUM:
-                return "http://img.youtube.com/vi/" + videoId + "/maxresdefault.jpg";
+                return IMG_YOUTUBE_COM_VI + videoId + "/maxresdefault.jpg";
             case STANDARD_DEFINITION:
-                return "http://img.youtube.com/vi/" + videoId + "/sddefault.jpg";
+                return IMG_YOUTUBE_COM_VI + videoId + "/sddefault.jpg";
             case MEDIUM:
-                return "http://img.youtube.com/vi/" + videoId + "/mqdefault.jpg";
+                return IMG_YOUTUBE_COM_VI + videoId + "/mqdefault.jpg";
             case HIGH:
-                return "http://img.youtube.com/vi/" + videoId + "/hqdefault.jpg";
+                return IMG_YOUTUBE_COM_VI + videoId + "/hqdefault.jpg";
             case DEFAULT:
             default:
-                return "http://img.youtube.com/vi/" + videoId + "/default.jpg";
+                return IMG_YOUTUBE_COM_VI + videoId + "/default.jpg";
         }
     }
 }
