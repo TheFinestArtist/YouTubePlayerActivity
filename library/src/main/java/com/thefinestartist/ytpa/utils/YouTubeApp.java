@@ -21,7 +21,7 @@ public class YouTubeApp {
                 intent,
                 PackageManager.MATCH_DEFAULT_ONLY);
 
-        if (list.size() == 0)
+        if (list.isEmpty())
             intent = new Intent(Intent.ACTION_VIEW, video_uri);
 
         context.startActivity(intent);
