@@ -10,6 +10,8 @@ import android.view.WindowManager;
  */
 public class StatusBarUtil {
 
+    private StatusBarUtil() {}
+
     public static void hide(Activity activity) {
         if (Build.VERSION.SDK_INT < 16) {
             activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,

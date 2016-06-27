@@ -8,6 +8,8 @@ import android.media.AudioManager;
  */
 public class AudioUtil {
 
+    private AudioUtil() {}
+
     private static final Object mSingletonLock = new Object();
     private static AudioManager audioManager;
 

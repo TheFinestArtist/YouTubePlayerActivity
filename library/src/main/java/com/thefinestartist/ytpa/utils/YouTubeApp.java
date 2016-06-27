@@ -14,6 +14,8 @@ import java.util.List;
  */
 public class YouTubeApp {
 
+    private YouTubeApp() {}
+
     public static void startVideo(@NonNull Context context, @NonNull String videoId) {
         Uri video_uri = Uri.parse(YouTubeUrlParser.getVideoUrl(videoId));
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" + videoId));

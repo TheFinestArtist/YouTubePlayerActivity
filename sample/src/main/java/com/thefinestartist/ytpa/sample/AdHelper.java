@@ -16,6 +16,8 @@ public class AdHelper {
     private static InterstitialAd interstitial = null;
     private static final Object lock = new Object();
 
+    private AdHelper() {}
+
     public static void loadBannerAd(AdView adView) {
         try {
             adView.loadAd(new AdRequest.Builder()
